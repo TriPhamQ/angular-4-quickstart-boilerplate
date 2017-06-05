@@ -1,0 +1,14 @@
+{
+  "/images/*": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }, 
+  "/menu/*": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }, 
+  "/users/*": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }
+}

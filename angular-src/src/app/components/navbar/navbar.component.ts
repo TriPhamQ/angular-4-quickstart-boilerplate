@@ -11,11 +11,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router, private flashMessage: FlashMessagesService, private authService: AuthService) { }
+  constructor(
+    private router: Router, 
+    private flashMessage: FlashMessagesService, 
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
 
+  // Logout submit.
   onLogoutClick() {
     this.authService.logout();
     this.flashMessage.show('You have logged out', {cssClass: 'alert-success', timeout: 3000});
