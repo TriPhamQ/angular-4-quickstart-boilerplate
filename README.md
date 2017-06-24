@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Set up
 
-git clone https://github.com/TriPhamQ/angular-4-quickstart-boilerplate.git {{project_name}}.
+git clone https://github.com/TriPhamQ/angular-4-with-authentication-quickstart-boilerplate.git {{project_name}}.
 cd {{project_name}}.
 npm install.
 cd angular-src.
