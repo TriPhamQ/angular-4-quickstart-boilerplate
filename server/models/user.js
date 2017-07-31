@@ -33,17 +33,36 @@ module.exports.getUserByUsername = function (username, callback) {
   User.findOne(query, callback);
 };
 
+module.exports.getUserByEmail = function (email, callback) {
+  const query = {email: email};
+  User.findOne(query, callback);
+};
+
 module.exports.addUser = function (newUser, callback) {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      if (err) {
-        throw err;
-      }
-      else {
-        newUser.password = hash;
-        newUser.save(callback);
-      };
-    });
+  User.findOne({email: newUser.email}, (err, user) => {
+    if (user) {
+      callback("User exist with that email", null);
+    }
+    else {
+      User.findOne({username: newUser.username}, (err, user) => {
+        if (user) {
+          callback("User exist with that username", null);
+        }
+        else {
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) {
+                throw err;
+              }
+              else {
+                newUser.password = hash;
+                newUser.save(callback);
+              };
+            });
+          });
+        };
+      });
+    };
   });
 };
 
